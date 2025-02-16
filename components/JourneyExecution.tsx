@@ -46,6 +46,8 @@ export default function JourneyExecution() {
     fetchJourneys();
   }, []);
 
+  // como foi em tempo record kk, eu colocaria todas as funções de fetch em um arquivo separado, para reutilização e utilizaria o axios para fazer as requisições
+  // poderia utilizar um react-query para fazer o fetch dos dados e manter o cache atualizado
   const fetchExecutions = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/journey-executions`);
@@ -90,7 +92,6 @@ export default function JourneyExecution() {
         },
         body: JSON.stringify(formattedData),
       });
-      console.log("🚀 ~ constonSubmit:SubmitHandler<JourneyExecutionFormInputs>= ~ formattedData:", formattedData);
 
       if (response.ok) {
         reset();
